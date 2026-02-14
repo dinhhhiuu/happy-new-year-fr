@@ -25,7 +25,7 @@ const flowerContainer = document.querySelector(".flowers");
 function createFlower() {
     const flower = document.createElement("div");
     flower.classList.add("flower");
-    flower.innerText = "🌸";
+    flower.innerText = Math.random() > 0.5 ? "🌸" : "💮";
     flower.style.left = Math.random() * 100 + "vw";
     flower.style.animationDuration = 3 + Math.random() * 5 + "s";
     flowerContainer.appendChild(flower);

@@ -47,6 +47,7 @@ body {
 }
 .effect-slide.active {
     transform: translate(-50%, -50%) translateX(0);
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
 }
 
 /* Hiệu ứng zoom */
@@ -55,6 +56,7 @@ body {
 }
 .effect-zoom.active {
     transform: translate(-50%, -50%) scale(1);
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
 }
 
 /* Hiệu ứng xoay */
@@ -63,6 +65,7 @@ body {
 }
 .effect-rotate.active {
     transform: translate(-50%, -50%) rotate(0) scale(1);
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
 }
 
 /* Hiệu ứng bay lên */
@@ -71,6 +74,7 @@ body {
 }
 .effect-up.active {
     transform: translate(-50%, -50%) translateY(0);
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
 }
 
 /* Hiệu ứng glow */
@@ -124,10 +128,27 @@ body {
     opacity: 1;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE MOBILE ===== */
 @media (max-width: 768px) {
-    .slide { font-size: 26px; padding: 20px; }
-    #finalMessage { font-size: 32px; }
+
+    .slide {
+        font-size: 26px;
+        padding: 0 20px;
+        line-height: 1.5;
+    }
+
+    #finalMessage {
+        font-size: 5vw;
+        line-height: 1.4;
+        padding: 0 20px;
+        top: 45%;
+    }
+
+    #musicToggle {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
 }
 
 /* ===== NÚT NHẠC ===== */
