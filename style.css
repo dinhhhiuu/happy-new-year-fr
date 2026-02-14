@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #000428, #004e92);
+    color: white;
+}
+
+/* ===== SLIDER ===== */
+.slider {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-size: 42px;
+    opacity: 0;
+    transition: all 1.2s ease;
+}
+
+/* Slide active */
+.slide.active {
+    opacity: 1;
+}
+
+/* Hiệu ứng trượt */
+.effect-slide {
+    transform: translate(-50%, -50%) translateX(100px);
+}
+.effect-slide.active {
+    transform: translate(-50%, -50%) translateX(0);
+}
+
+/* Hiệu ứng zoom */
+.effect-zoom {
+    transform: translate(-50%, -50%) scale(0.5);
+}
+.effect-zoom.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Hiệu ứng xoay */
+.effect-rotate {
+    transform: translate(-50%, -50%) rotate(-20deg) scale(0.5);
+}
+.effect-rotate.active {
+    transform: translate(-50%, -50%) rotate(0) scale(1);
+}
+
+/* Hiệu ứng bay lên */
+.effect-up {
+    transform: translate(-50%, -50%) translateY(100px);
+}
+.effect-up.active {
+    transform: translate(-50%, -50%) translateY(0);
+}
+
+/* Hiệu ứng glow */
+.effect-glow {
+    transform: translate(-50%, -50%) scale(0.7);
+}
+.effect-glow.active {
+    transform: translate(-50%, -50%) scale(1);
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
+}
+
+/* ===== HOA RƠI ===== */
+.flower {
+    position: absolute;
+    top: -10px;
+    font-size: 24px;
+    animation: fall linear infinite;
+    z-index: 4;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* ===== PHÁO HOA ===== */
+#fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* ===== CHỮ CUỐI ===== */
+#finalMessage {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 0 0 20px orange, 0 0 40px red;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: 3;
+}
+
+#finalMessage.show {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide { font-size: 26px; padding: 20px; }
+    #finalMessage { font-size: 32px; }
+}
