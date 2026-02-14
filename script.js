@@ -120,19 +120,22 @@ function launchFireworks() {
     }, 500);
 }
 
-// ===== AUTOPLAY FIX CHUẨN =====
-window.addEventListener("load", () => {
-    const music = document.getElementById("bgmusic");
+// ===== NÚT BẬT TẮT NHẠC =====
+const music = document.getElementById("bgmusic");
+const toggleBtn = document.getElementById("musicToggle");
 
-    // Bật thử ngay khi load
-    music.play().then(() => {
+let isPlaying = false;
+
+toggleBtn.addEventListener("click", () => {
+    if (!isPlaying) {
         music.muted = false;
-    }).catch(() => {
-        // Nếu bị chặn thì chờ người dùng chạm
-        document.addEventListener("click", () => {
-            music.muted = false;
-            music.play();
-        }, { once: true });
-    });
+        music.play();
+        toggleBtn.innerText = "🔊";
+        isPlaying = true;
+    } else {
+        music.pause();
+        toggleBtn.innerText = "🔇";
+        isPlaying = false;
+    }
 });
 
