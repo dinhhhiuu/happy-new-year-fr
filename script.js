@@ -139,7 +139,7 @@ animate();
 function launchFireworks() {
     setInterval(() => {
         fireworks.push(new Firework());
-    }, 1000);
+    }, 850);
 }
 
 // ===== NÚT BẬT TẮT NHẠC =====
