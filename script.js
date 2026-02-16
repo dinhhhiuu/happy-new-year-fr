@@ -25,23 +25,45 @@ const flowerContainer = document.querySelector(".flowers");
 function createFlower() {
     const flower = document.createElement("div");
     flower.classList.add("flower");
-    flower.innerText = Math.random() > 0.5 ? "🌸" : "💮";
+
+    // Chỉ hoa 🌸
+    flower.innerText = "🌸";
+
+    // Vị trí ngang random
     flower.style.left = Math.random() * 100 + "vw";
-    flower.style.animationDuration = 3 + Math.random() * 5 + "s";
+
+    // Thời gian rơi random
+    flower.style.animationDuration = 4 + Math.random() * 4 + "s";
+
+    // Kích thước random
+    flower.style.fontSize = (isMobile ? 12 : 18) + Math.random() * (isMobile ? 10 : 22) + "px";
+
     flowerContainer.appendChild(flower);
 
-    setTimeout(() => flower.remove(), 8000);
+    setTimeout(() => {
+        flower.remove();
+    }, 9000);
 }
 
-setInterval(createFlower, 300);
+// Kiểm tra mobile
+const isMobile = window.innerWidth <= 768;
 
+// Mobile rơi chậm hơn (ít hoa hơn)
+const flowerInterval = isMobile ? 600 : 250;
+
+setInterval(createFlower, flowerInterval);
 
 // ===== PHÁO HOA =====
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let fireworks = [];
 let particles = [];
@@ -117,7 +139,7 @@ animate();
 function launchFireworks() {
     setInterval(() => {
         fireworks.push(new Firework());
-    }, 500);
+    }, 1000);
 }
 
 // ===== NÚT BẬT TẮT NHẠC =====
@@ -139,3 +161,10 @@ toggleBtn.addEventListener("click", () => {
     }
 });
 
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
